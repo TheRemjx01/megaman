@@ -4,15 +4,15 @@ import { ModalState } from '@shared/hocs';
 import IncompleteFlowsConfirmModal from './components/incomplete-flow-modal';
 
 interface FlowManagerProps {
-  children: ReactNode;
-  incompleteFlowModalState: ModalState;
-  firstIncompleteFlowName: string;
-  discardIncompleteFlow: () => void;
-  confirmRestoreIncompleteFlow: () => void;
-  discardText: string;
-  okText: string;
-  titleText: string;
-  message: string;
+	children: ReactNode;
+	incompleteFlowModalState: ModalState;
+	firstIncompleteFlowName: string;
+	discardIncompleteFlow: () => void;
+	confirmRestoreIncompleteFlow: () => void;
+	discardText: string;
+	okText: string;
+	titleText: string;
+	message: string;
 }
 
 const FlowManagerReminder = ({

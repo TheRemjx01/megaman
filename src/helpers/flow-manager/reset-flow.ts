@@ -5,6 +5,8 @@ import {
 } from '@helpers/flow-manager/local-storage';
 import { withHandlers } from 'recompose';
 import { DEFAULT_AGREEMENT_ID, FLOW_MANAGER } from '@helpers/flow-manager/constants';
+import { ReactElement } from 'react';
+import { HOC } from '@selfTypes/index';
 
 interface ResetFlowParams {
 	flow: string;
@@ -39,7 +41,7 @@ export const resetSelectedFlowKeysHandler = ({
 	selectedFlowKeys = [],
 	pathToAgreementId,
 	...otherProps
-}: ResetSelectedFlowKeysParams) => () => {
+}: ResetSelectedFlowKeysParams) => (): void => {
 	selectedFlowKeys.forEach((flowKey) => {
 		resetFlow({ flow: flowKey, pathToAgreementId })(otherProps);
 	});
@@ -49,12 +51,12 @@ interface WithResetFlowProps {
 	resetAgreementFlow: (props: object) => void;
 }
 
-type WithResetFlowHOC = (Component: any) => (props: WithResetFlowProps) => any;
+type WithResetFlowHOC = HOC<(props: WithResetFlowProps) => ReactElement>;
 
 export const withResetFlowHandlers = ({
 	flow,
 	pathToAgreementId,
 }: ResetFlowParams): WithResetFlowHOC =>
 	withHandlers({
-		resetAgreementFlow: (props) => () => resetFlow({ flow, pathToAgreementId })(props),
+		resetAgreementFlow: (props) => (): void => resetFlow({ flow, pathToAgreementId })(props),
 	});

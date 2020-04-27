@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "rootDir": "./src",
     "outDir": "./dist",
     "noImplicitAny": false,
     "declaration": false,
@@ -13,9 +14,13 @@
     "paths": {
       "@components/*": ["component/*"],
       "@shared/*": ["shared/*"],
-      "@helpers/*": ["helpers/*"]
+      "@helpers/*": ["helpers/*"],
+      "@selfTypes/*": ["types/*"]
     }
   },
+  "include": [
+    "src/**/*"
+  ],
   "exclude": [
     "node_modules",
     "dist"

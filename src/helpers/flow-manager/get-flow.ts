@@ -11,6 +11,7 @@ import { Flow } from '@helpers/flow-manager/types';
 import { get } from 'lodash';
 import { withProps } from 'recompose';
 import * as React from 'react';
+import { HOC } from '@selfTypes/index';
 
 interface GetIncompleteFlowsParams {
 	selectedFlowKeys: string[];
@@ -107,9 +108,7 @@ export const restoreCurrentStep = ({
 	};
 };
 
-type WithIncompleteFlowsHOC = (
-	Component: React.Component | React.FunctionComponent,
-) => (props: GetIncompleteFlowsOutput) => React.ReactElement;
+type WithIncompleteFlowsHOC = HOC<(props: GetIncompleteFlowsOutput) => React.ReactElement>;
 
 export const withIncompleteFlows = ({
 	selectedFlowKeys,
@@ -117,9 +116,7 @@ export const withIncompleteFlows = ({
 }: GetIncompleteFlowsParams): WithIncompleteFlowsHOC =>
 	withProps(getIncompleteFlows({ selectedFlowKeys, pathToAgreementId }));
 
-type WithRestoreCurrentStepHOC = (
-	Component: React.Component | React.FunctionComponent,
-) => (props: RestoreCurrentStepOutput) => React.ReactElement;
+type WithRestoreCurrentStepHOC = HOC<(props: RestoreCurrentStepOutput) => React.ReactElement>;
 
 export const withRestoreCurrentStep = ({
 	flow,
@@ -137,9 +134,7 @@ export const mapExtraProps = (propKeys: string[] = []) => (props: object): objec
 	};
 };
 
-type WithFlowExtraPropsHOC = (
-	Component: React.Component | React.FunctionComponent,
-) => (props: object) => React.ReactElement;
+type WithFlowExtraPropsHOC = HOC<(props: object) => React.ReactElement>;
 
 export const withFlowExtraProps = (propKeys: string[]): WithFlowExtraPropsHOC =>
 	withProps(mapExtraProps(propKeys));
