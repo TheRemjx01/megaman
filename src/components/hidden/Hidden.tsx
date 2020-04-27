@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 
 interface HiddenProps {
-  children: React.ReactNode
+  children: React.ReactNode;
 }
 
-const Hidden = ({ children }: HiddenProps) => <React.Fragment>{children}</React.Fragment>;
+const Hidden = ({ children }: HiddenProps): ReactElement =>
+	<React.Fragment>{children}</React.Fragment>;
 
 
 export default Hidden;

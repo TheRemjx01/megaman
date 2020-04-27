@@ -1,1 +1,1 @@
-export function helloFunc():void;
+export function helloFunc(): void;

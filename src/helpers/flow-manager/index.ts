@@ -1,25 +1,26 @@
 export {
-    withResetFlowHandlers,
-    resetSelectedFlowKeysHandler
-} from "@helpers/flow-manager/reset-flow";
-export {withClearFlowManagerHandlers} from "@helpers/flow-manager/clear-flow";
+	withResetFlowHandlers,
+	resetSelectedFlowKeysHandler,
+} from '@helpers/flow-manager/reset-flow';
+export { withClearFlowManagerHandlers } from '@helpers/flow-manager/clear-flow';
 export {
-    withSaveCurrentStep,
-    withSetLocalStorageStepHandlers
-} from "@helpers/flow-manager/set-flow";
+	withSaveCurrentStep,
+	withSetLocalStorageStepHandlers,
+} from '@helpers/flow-manager/set-flow';
 export {
-    getFirstIncompleteFlow,
-    getIncompleteFlows,
-    withFlowExtraProps,
-    withIncompleteFlows,
-    withRestoreCurrentStep
-} from "@helpers/flow-manager/get-flow";
+	getFirstIncompleteFlow,
+	getIncompleteFlows,
+	withFlowExtraProps,
+	withIncompleteFlows,
+	withRestoreCurrentStep,
+} from '@helpers/flow-manager/get-flow';
 
 /** @Description: flowManager in localStorage format in localStorage:
  *  flowManager = {
  *    [agreementId]: { // saved state of a specific agreement by its id
  *      [flowName]: { // saved state of a specific flow
- *        currentStep: {number | string }{required}, // stepIndex - can be in whatever format - recommend {number | string} to make it simple
+ *        currentStep: {number | string }{required},
+ *        	// stepIndex - can be in whatever format - recommend {number | string} to make it simple
  *        extraProps: {object}{optional} // extraProps that need for components restoration
  *        currentUrl: {string} // url of current step that support for restoration from other scene
  *      }

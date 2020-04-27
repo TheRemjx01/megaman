@@ -1,4 +1,4 @@
-export * from './flow-manager'
+export * from './flow-manager';
 
 /** @Description: flowManager in localStorage format in localStorage:
  *  flowManager = {
