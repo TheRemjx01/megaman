@@ -2,16 +2,16 @@ import React from 'react';
 import { Button, Modal } from 'antd';
 
 interface IncompleteFlowsConfirmModalProps {
-    visible: boolean;
-    onCancel: (...params: any) => any;
-    loading: boolean;
-    discardIncompleteFlow: () => any;
-    confirmRestoreIncompleteFlow: () => any;
-    incompleteFlowName: string;
-    titleText: string;
-    okText: string;
-    discardText: string;
-    message: string;
+	visible: boolean;
+	onCancel: (...params: any) => any;
+	loading: boolean;
+	discardIncompleteFlow: () => any;
+	confirmRestoreIncompleteFlow: () => any;
+	incompleteFlowName: string;
+	titleText: string;
+	okText: string;
+	discardText: string;
+	message: string;
 }
 
 const IncompleteFlowsConfirmModal = ({
@@ -34,12 +34,7 @@ const IncompleteFlowsConfirmModal = ({
 			<Button onClick={discardIncompleteFlow} key="cancel" size="small">
 				{discardText}
 			</Button>,
-			<Button
-				onClick={confirmRestoreIncompleteFlow}
-				type="primary"
-				key="confirm"
-				size="small"
-			>
+			<Button onClick={confirmRestoreIncompleteFlow} type="primary" key="confirm" size="small">
 				{okText}
 			</Button>,
 		]}

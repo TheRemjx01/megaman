@@ -11,6 +11,4 @@ export interface EnhancedHiddenProps {
 	children: React.ReactNode;
 }
 
-export type HiddenHOC = (
-	Component: React.Component | React.FunctionComponent,
-) => (props: EnhancedHiddenProps) => React.ReactNode;
+export type HiddenHOC = (Component: any) => (props: EnhancedHiddenProps) => React.ReactElement;

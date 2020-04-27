@@ -1,7 +1,7 @@
-import { ReactNode } from 'react';
+import { ReactElement } from 'react';
 
 export interface EnhancedFlowManagerReminderProps {
 	selectedFlowKeys: string[];
 }
 
-export type FlowManagerReminderType = (props: EnhancedFlowManagerReminderProps) => ReactNode;
+export type FlowManagerReminderType = (props: EnhancedFlowManagerReminderProps) => ReactElement;
