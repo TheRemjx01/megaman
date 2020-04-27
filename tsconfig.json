@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist",
+    "noImplicitAny": false,
+    "declaration": false,
+    "module": "commonjs",
+    "lib": ["es6", "dom"],
+    "esModuleInterop": true,
+    "target": "es5",
+    "jsx": "react",
+    "baseUrl": "src",
+    "moduleResolution": "node",
+    "paths": {
+      "@components/*": ["component/*"],
+      "@shared/*": ["shared/*"],
+      "@helpers/*": ["helpers/*"]
+    }
+  },
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
+}
