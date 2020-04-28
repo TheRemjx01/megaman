@@ -7,7 +7,9 @@ interface SetLocalStorageParams {
 	body: object;
 }
 
-export const getItemFromLocalStorage = ({ item }: GetLocalStorageParams): object => {
+export const getItemFromLocalStorage = ({
+	item,
+}: GetLocalStorageParams): object => {
 	try {
 		return JSON.parse(localStorage.getItem(item));
 	} catch (err) {
@@ -16,6 +18,9 @@ export const getItemFromLocalStorage = ({ item }: GetLocalStorageParams): object
 	}
 };
 
-export const setItemToLocalStorage = ({ item, body }: SetLocalStorageParams): void => {
+export const setItemToLocalStorage = ({
+	item,
+	body,
+}: SetLocalStorageParams): void => {
 	localStorage.setItem(item, JSON.stringify(body));
 };

@@ -1,23 +1,29 @@
-export {
-	withResetFlowHandlers,
-	resetSelectedFlowKeysHandler,
-} from '@helpers/flow-manager/reset-flow';
 export { withClearFlowManagerHandlers } from '@helpers/flow-manager/clear-flow';
 export {
-	withSaveCurrentStep,
-	withSetLocalStorageStepHandlers,
-} from '@helpers/flow-manager/set-flow';
+	getIncompleteFlow,
+	withIncompleteFlow,
+} from '@helpers/flow-manager/get-flow-v2';
+
 export {
-	getFirstIncompleteFlow,
-	getIncompleteFlows,
-	withFlowExtraProps,
-	withIncompleteFlows,
-	withRestoreCurrentStep,
-} from '@helpers/flow-manager/get-flow';
+	restoreCurrentStep,
+	withRestoreCurrentStepHandler,
+} from '@helpers/flow-manager/restore-flow';
+
+export {
+	resetFlowV2,
+	resetSelectedFlowKeysHandlerV2,
+} from '@helpers/flow-manager/reset-flow-v2';
+
+export {
+	withSetLocalStorageStepHandlersV2,
+	withSaveCurrentStepV2,
+	getUpdateFlow,
+	setStep,
+} from '@helpers/flow-manager/set-flow-v2';
 
 /** @Description: flowManager in localStorage format in localStorage:
  *  flowManager = {
- *    [agreementId]: { // saved state of a specific agreement by its id
+ *    [entityId]: { // saved state of a specific entity by its id
  *      [flowName]: { // saved state of a specific flow
  *        currentStep: {number | string }{required},
  *        	// stepIndex - can be in whatever format - recommend {number | string} to make it simple

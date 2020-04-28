@@ -13,7 +13,7 @@
     "baseUrl": "src",
     "moduleResolution": "node",
     "paths": {
-      "@components/*": ["component/*"],
+      "@components/*": ["components/*"],
       "@shared/*": ["shared/*"],
       "@helpers/*": ["helpers/*"],
       "@selfTypes/*": ["types/*"]

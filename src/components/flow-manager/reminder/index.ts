@@ -1,7 +1,19 @@
+import * as React from 'react';
 import enhance from './enhance';
-import FlowManagerReminder from './FlowManagerReminder';
-import { FlowManagerReminderType } from './types';
+import FlowManagerReminder, { ReminderProps } from './FlowManagerReminder';
 
-const enhancedFlowManagerReminder: FlowManagerReminderType = enhance(FlowManagerReminder);
+export interface EnhancedFlowManagerReminderProps {
+	flowKey: string;
+	Reminder: React.FunctionComponent<ReminderProps>;
+	reminderProps: ReminderProps;
+}
+
+export type FlowManagerReminderType = React.FC<
+	EnhancedFlowManagerReminderProps
+>;
+
+const enhancedFlowManagerReminder: FlowManagerReminderType = enhance(
+	FlowManagerReminder,
+);
 
 export default enhancedFlowManagerReminder;

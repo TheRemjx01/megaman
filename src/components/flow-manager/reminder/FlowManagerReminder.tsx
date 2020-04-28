@@ -1,46 +1,40 @@
 import * as React from 'react';
-import { ModalState } from '@shared/hocs';
-import IncompleteFlowsConfirmModal from './components/incomplete-flow-modal';
+import Hidden from '@components/hidden';
 
 const Fragment = React.Fragment;
 
-interface FlowManagerProps {
-	children: React.ReactNode;
-	incompleteFlowModalState: ModalState;
-	firstIncompleteFlowName: string;
-	discardIncompleteFlow: () => void;
+export interface ReminderProps {
+	resetFlow: () => void;
 	confirmRestoreIncompleteFlow: () => void;
-	discardText: string;
-	okText: string;
-	titleText: string;
-	message: string;
+	[otherPropKey: string]: any;
 }
 
-const FlowManagerReminder = ({
+export interface FlowManagerProps {
+	children?: React.ReactElement;
+	Reminder: React.FunctionComponent<ReminderProps>;
+	shouldReminderShow?: boolean;
+	resetFlow: () => void;
+	confirmRestoreIncompleteFlow: () => void;
+	reminderProps?: ReminderProps;
+}
+
+const FlowManagerReminder: React.FC<FlowManagerProps> = ({
 	children,
-	incompleteFlowModalState,
-	firstIncompleteFlowName,
-	discardIncompleteFlow,
+	Reminder,
+	reminderProps,
+	shouldReminderShow,
+	resetFlow,
 	confirmRestoreIncompleteFlow,
-	discardText,
-	okText,
-	titleText,
-	message,
-}: FlowManagerProps): React.ReactNode => (
+}: FlowManagerProps) => (
 	<Fragment>
 		{children}
-		<IncompleteFlowsConfirmModal
-			discardText={discardText}
-			message={message}
-			okText={okText}
-			titleText={titleText}
-			visible={incompleteFlowModalState.isVisible}
-			onCancel={incompleteFlowModalState.hideModal}
-			incompleteFlowName={firstIncompleteFlowName}
-			loading={incompleteFlowModalState.isLoading}
-			discardIncompleteFlow={discardIncompleteFlow}
-			confirmRestoreIncompleteFlow={confirmRestoreIncompleteFlow}
-		/>
+		<Hidden when={shouldReminderShow}>
+			<Reminder
+				{...reminderProps}
+				resetFlow={resetFlow}
+				confirmRestoreIncompleteFlow={confirmRestoreIncompleteFlow}
+			/>
+		</Hidden>
 	</Fragment>
 );
 

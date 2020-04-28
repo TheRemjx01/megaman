@@ -1,36 +1,33 @@
 import { withRouter } from 'react-router-dom';
 import {
-	getFirstIncompleteFlow,
-	getIncompleteFlows,
-	resetSelectedFlowKeysHandler,
+	getIncompleteFlow,
+	resetSelectedFlowKeysHandlerV2,
+	withIncompleteFlow,
 } from '@helpers/index';
-import { withHandlers, withProps, compose, defaultProps } from 'recompose';
-import { ModalState, withModalStateV2 } from '@shared/hocs';
-
-const enhanceDefaultProps = {
-	selectedFlowKeys: [],
-	pathToAgreementId: 'match.params.id',
-};
+import { withHandlers, withProps, compose } from 'recompose';
+import { ModalState } from '@shared/hocs';
+import { GetEntityId } from '@helpers/flow-manager/types';
 
 interface WithIncompleteFlowDataParams {
-	selectedFlowKeys: string[];
-	pathToAgreementId: string;
+	flowKey: string;
+	getEntityId: GetEntityId;
 }
 
 export const withIncompleteFlowData = ({
-	selectedFlowKeys,
-	pathToAgreementId,
+	flowKey,
+	getEntityId,
 	...otherProps
-}: WithIncompleteFlowDataParams): object =>
-	getIncompleteFlows({ selectedFlowKeys, pathToAgreementId })(otherProps);
-
-interface CanFlowModalVisibleParams {
-	firstIncompleteFlowName: string;
-}
-
-export const canFlowModalVisible = ({
-	firstIncompleteFlowName,
-}: CanFlowModalVisibleParams): boolean => !!firstIncompleteFlowName;
+}: WithIncompleteFlowDataParams): object => {
+	const { incompleteFlow } = getIncompleteFlow({
+		flowKey,
+		getEntityId,
+	})(otherProps);
+	const shouldReminderShow = !!incompleteFlow;
+	return {
+		incompleteFlow,
+		shouldReminderShow,
+	};
+};
 
 interface OnDiscardIncompleteFlowHandlerParams {
 	resetAgreementFlow: () => void;
@@ -59,26 +56,20 @@ interface ConfirmRestoreIncompleteFlowParams {
 
 export const confirmRestoreIncompleteFlowHandler = ({
 	history,
-	incompleteFlowModalState,
 	firstIncompleteCurrentUrl,
 }: ConfirmRestoreIncompleteFlowParams) => (): void => {
 	if (!firstIncompleteCurrentUrl) {
 		return;
 	}
 	history.push(firstIncompleteCurrentUrl);
-	incompleteFlowModalState.hideModal();
 };
 
 const enhance = compose(
 	withRouter,
-	defaultProps(enhanceDefaultProps),
 	withProps(withIncompleteFlowData),
-	withProps(getFirstIncompleteFlow),
-	withModalStateV2('incompleteFlowModalState', {
-		visibleCondition: canFlowModalVisible,
-	}),
+	withIncompleteFlow,
 	withHandlers({
-		resetAgreementFlow: resetSelectedFlowKeysHandler,
+		resetFlow: resetSelectedFlowKeysHandlerV2,
 	}),
 	withHandlers({
 		discardIncompleteFlow: onDiscardIncompleteFlowHandler,
