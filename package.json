@@ -1,14 +1,15 @@
 {
-  "name": "megaman",
+  "name": "@theremjx01/megaman",
   "version": "0.0.1",
   "description": "Some cool React tools you may need ",
-  "main": "index.js",
+  "main": "dist/index",
   "scripts": {
     "build": "tsc --project tsconfig.json",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint . --ext .ts",
     "fix": "eslint . --ext .ts --fix"
   },
+  "files": ["dist"],
   "author": "",
   "license": "ISC",
   "dependencies": {
@@ -36,5 +37,13 @@
     "source-map-loader": "^0.2.4",
     "ts-loader": "^7.0.1",
     "typescript": "^3.8.3"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TheRemjx01/megaman.git"
+  },
+  "bugs": {
+    "url": "https://github.com/TheRemjx01/megaman/issues"
+  },
+  "homepage": "https://github.com/TheRemjx01/megaman#readme"
 }

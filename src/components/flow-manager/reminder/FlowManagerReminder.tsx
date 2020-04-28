@@ -1,10 +1,11 @@
-import React, { Fragment, ReactNode } from 'react';
+import * as React from 'react';
 import { ModalState } from '@shared/hocs';
-
 import IncompleteFlowsConfirmModal from './components/incomplete-flow-modal';
 
+const Fragment = React.Fragment;
+
 interface FlowManagerProps {
-	children: ReactNode;
+	children: React.ReactNode;
 	incompleteFlowModalState: ModalState;
 	firstIncompleteFlowName: string;
 	discardIncompleteFlow: () => void;
@@ -25,7 +26,7 @@ const FlowManagerReminder = ({
 	okText,
 	titleText,
 	message,
-}: FlowManagerProps): ReactNode => (
+}: FlowManagerProps): React.ReactNode => (
 	<Fragment>
 		{children}
 		<IncompleteFlowsConfirmModal

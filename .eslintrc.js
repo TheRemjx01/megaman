@@ -23,7 +23,7 @@ module.exports = {
         "react"
     ],
     "rules": {
-        "max-len": ["error", { "code": 100 }],
+        "max-len": ["error", { "code": 120 }],
         "@typescript-eslint/no-explicit-any": "off",
         "indent": [
             "error",

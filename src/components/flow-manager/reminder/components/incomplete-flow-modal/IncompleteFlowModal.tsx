@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { Button, Modal } from 'antd';
 
 interface IncompleteFlowsConfirmModalProps {
@@ -34,7 +34,12 @@ const IncompleteFlowsConfirmModal = ({
 			<Button onClick={discardIncompleteFlow} key="cancel" size="small">
 				{discardText}
 			</Button>,
-			<Button onClick={confirmRestoreIncompleteFlow} type="primary" key="confirm" size="small">
+			<Button
+				onClick={confirmRestoreIncompleteFlow}
+				type="primary"
+				key="confirm"
+				size="small"
+			>
 				{okText}
 			</Button>,
 		]}

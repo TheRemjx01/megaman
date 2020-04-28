@@ -1,11 +1,23 @@
 import { branch, renderNothing } from 'recompose';
-import { ConditionFunc, IsHiddenParams } from './types';
-import React from 'react';
 
-export const isHidden = ({ when }: IsHiddenParams): ConditionFunc => when;
+export type ConditionFunc = () => boolean;
 
-const renderNothingWhileHidden: (
-	Component: React.FunctionComponent | React.Component,
-) => any = branch(isHidden, renderNothing);
+export declare type When = ConditionFunc | boolean;
+
+export declare interface IsHiddenParams {
+	when: When;
+}
+
+export const isHidden = ({ when }: IsHiddenParams): When => {
+	if (typeof when === 'function') {
+		return when();
+	}
+	if (when === undefined || when === null) {
+		return true;
+	}
+	return when;
+};
+
+const renderNothingWhileHidden = branch(isHidden, renderNothing);
 
 export default renderNothingWhileHidden;

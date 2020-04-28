@@ -1,7 +1,14 @@
-import enhance from './enhance';
+import enhance, { When } from './enhance';
 import Hidden from './Hidden';
-import { HiddenHOC } from './types';
+import * as React from 'react';
 
-const EnhancedHidden: HiddenHOC = enhance(Hidden);
+export declare type EnhancedHiddenProps = {
+	when?: When;
+	children: React.ReactElement;
+};
+
+export type HiddenProps = React.FC<EnhancedHiddenProps>;
+
+const EnhancedHidden: HiddenProps = enhance(Hidden);
 
 export default EnhancedHidden;
