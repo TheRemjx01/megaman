@@ -1,8 +1,9 @@
-import { withRouter } from 'react-router-dom';
 import { withHandlers, withProps, compose } from 'recompose';
-import { getIncompleteFlow, withIncompleteFlow } from '../hocs/get-flow-v2';
-import { GetEntityId } from '../hocs/types';
-import { resetSelectedFlowKeysHandlerV2 } from '../hocs/reset-flow-v2';
+import {
+	getIncompleteFlow,
+	GetEntityId,
+	resetSelectedFlowKeysHandlerV2,
+} from '../hocs';
 
 interface WithIncompleteFlowDataParams {
 	flowKey: string;
@@ -35,29 +36,23 @@ export const onDiscardIncompleteFlowHandler = ({
 	resetAgreementFlow();
 };
 
-interface ReactRouterType {
-	push: (string) => void;
-}
+export type NavigateFunc = (path: string) => void;
 
 interface ConfirmRestoreIncompleteFlowParams {
-	history: ReactRouterType;
 	firstIncompleteCurrentUrl: string;
 }
 
 export const confirmRestoreIncompleteFlowHandler = ({
-	history,
 	firstIncompleteCurrentUrl,
-}: ConfirmRestoreIncompleteFlowParams) => (): void => {
+}: ConfirmRestoreIncompleteFlowParams) => (navigate: NavigateFunc): void => {
 	if (!firstIncompleteCurrentUrl) {
 		return;
 	}
-	history.push(firstIncompleteCurrentUrl);
+	navigate(firstIncompleteCurrentUrl);
 };
 
 const enhance = compose(
-	withRouter,
 	withProps(withIncompleteFlowData),
-	withIncompleteFlow,
 	withHandlers({
 		resetFlow: resetSelectedFlowKeysHandlerV2,
 	}),

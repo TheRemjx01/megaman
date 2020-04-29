@@ -1,11 +1,13 @@
 import * as React from 'react';
-import enhance from './enhance';
 import FlowManagerReminder, { ReminderProps } from './FlowManagerReminder';
+import enhance from './enhance';
+import { GetEntityId } from '../hocs';
 
 export interface EnhancedFlowManagerReminderProps {
 	flowKey: string;
 	Reminder: React.FunctionComponent<ReminderProps>;
-	reminderProps: ReminderProps;
+	extraReminderProps?: any;
+	getEntityId: GetEntityId;
 }
 
 export type FlowManagerReminderType = React.FC<

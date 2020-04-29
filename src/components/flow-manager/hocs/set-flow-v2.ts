@@ -2,16 +2,16 @@ import { getUpdateExtraProps } from './extra-props';
 import { get } from 'lodash';
 import { FlowManager, GetEntityId } from './types';
 import { withHandlers, withProps } from 'recompose';
-import {
-	getFlowManager,
-	setFlowManager,
-} from './flow-manager';
+import { getFlowManager, setFlowManager } from './flow-manager';
+
+type GetCurrentUrl = (props: object) => any;
 
 interface GetUpdateFlowParams {
 	flow: string;
 	step: string;
 	extraProps: string[];
 	flowManager: any;
+	getCurrentUrl: GetCurrentUrl;
 }
 
 export const getUpdateFlow = ({
@@ -19,8 +19,9 @@ export const getUpdateFlow = ({
 	step,
 	extraProps = [],
 	flowManager,
+	getCurrentUrl,
 }: GetUpdateFlowParams) => (props: object): FlowManager => {
-	const currentUrl = get(props, 'match.url');
+	const currentUrl = getCurrentUrl(props);
 	const updateFlow = get(flowManager, `[${flow}]`, {});
 	updateFlow.currentStep = step;
 	updateFlow.currentUrl = currentUrl;
@@ -41,6 +42,7 @@ interface SetStepParams {
 	step: string;
 	getEntityId: GetEntityId;
 	extraProps?: any[];
+	getCurrentUrl: GetCurrentUrl;
 }
 
 export const setStep = ({
@@ -48,6 +50,7 @@ export const setStep = ({
 	step,
 	getEntityId,
 	extraProps = [],
+	getCurrentUrl,
 }: SetStepParams) => (props: object): void => {
 	const entityId = getEntityId(props);
 	const flowManager = getFlowManager();
@@ -60,6 +63,7 @@ export const setStep = ({
 			step,
 			extraProps,
 			flowManager: targetFlow,
+			getCurrentUrl,
 		})(props),
 	};
 
@@ -71,8 +75,9 @@ export const withSaveCurrentStepV2 = ({
 	step,
 	getEntityId,
 	extraProps,
+	getCurrentUrl,
 }: SetStepParams) =>
-	withProps(setStep({ flow, step, getEntityId, extraProps }));
+	withProps(setStep({ flow, step, getEntityId, extraProps, getCurrentUrl }));
 
 interface WithSetLocalStorageProps {
 	setLocalStorageStep: (props: SetStepParams) => any;
@@ -87,6 +92,7 @@ export const withSetLocalStorageStepHandlersV2 = ({
 	step,
 	getEntityId,
 	extraProps,
+	getCurrentUrl,
 }: SetStepParams): WithSetLocalStorageHOC =>
 	withHandlers({
 		setLocalStorageStep: setStep({
@@ -94,5 +100,6 @@ export const withSetLocalStorageStepHandlersV2 = ({
 			step,
 			getEntityId,
 			extraProps,
+			getCurrentUrl,
 		}),
 	});

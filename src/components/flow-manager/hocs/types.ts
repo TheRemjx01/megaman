@@ -12,7 +12,7 @@ export interface FlowManager {
 	[entityId: string]: Flow;
 }
 
-export type GetEntityId = (props: object) => string | number;
+export type GetEntityId = (props?: object) => string | number;
 
 export interface ResetFlowParamsV2 {
 	flow: string;
