@@ -1,29 +1,23 @@
 {
   "compilerOptions": {
-    "rootDir": "./src",
     "outDir": "./dist",
     "noImplicitAny": false,
     "declaration": true,
     "sourceMap": true,
-    "module": "commonjs",
-    "lib": ["es6", "dom"],
+    "module": "es6",
+    "lib": ["es5", "es6", "es7", "es2017", "dom"],
     "esModuleInterop": true,
-    "target": "es6",
+    "target": "es5",
     "jsx": "react",
-    "baseUrl": "src",
-    "moduleResolution": "node",
-    "paths": {
-      "@components/*": ["components/*"],
-      "@shared/*": ["shared/*"],
-      "@helpers/*": ["helpers/*"],
-      "@selfTypes/*": ["types/*"]
-    }
+    "baseUrl": ".",
+    "moduleResolution": "node"
   },
   "include": [
     "src/**/*"
   ],
   "exclude": [
     "node_modules",
-    "dist"
+    "dist",
+    "webpack.config.js"
   ]
 }

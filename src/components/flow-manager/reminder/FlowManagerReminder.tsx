@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Hidden from '@components/hidden';
+import Hidden from '../../hidden';
 
 const Fragment = React.Fragment;
 

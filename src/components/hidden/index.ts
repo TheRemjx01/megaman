@@ -4,7 +4,7 @@ import * as React from 'react';
 
 export declare type EnhancedHiddenProps = {
 	when?: When;
-	children: React.ReactElement;
+	children: React.ReactElement | string;
 };
 
 export type HiddenProps = React.FC<EnhancedHiddenProps>;

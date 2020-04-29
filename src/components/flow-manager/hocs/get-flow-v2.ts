@@ -1,26 +1,27 @@
-import {
-	FlowData,
-	GetEntityId,
-} from '@helpers/flow-manager/types';
 import { get } from 'lodash';
 import { withProps } from 'recompose';
 import * as React from 'react';
-import { getFlowManager } from '@helpers/flow-manager/flow-manager';
+import { getFlowManager } from './flow-manager';
+import { FlowData, GetEntityId } from './types';
 
-interface GetIncompleteFlowParams {
+export interface GetIncompleteFlowParams {
 	flowKey: string;
 	getEntityId: GetEntityId;
 }
 
-interface GetIncompleteFlowOutput {
+export interface GetIncompleteFlowOutput {
 	incompleteFlow: FlowData;
 }
 
-interface WithIncompleteFlowHOCProps extends GetIncompleteFlowOutput {
+export interface WithIncompleteFlowHOCProps extends GetIncompleteFlowOutput {
 	[otherProp: string]: any;
 }
 
-export const getIncompleteFlow = ({
+export type GetIncompleteFlow = (
+	params: GetIncompleteFlowParams,
+) => (props: object) => GetIncompleteFlowOutput;
+
+export const getIncompleteFlow: GetIncompleteFlow = ({
 	flowKey,
 	getEntityId,
 }: GetIncompleteFlowParams) => (props: object): GetIncompleteFlowOutput => {
@@ -36,7 +37,11 @@ type WithIncompleteFlowHOC = (
 	Component: React.FunctionComponent,
 ) => React.FunctionComponent<WithIncompleteFlowHOCProps>;
 
-export const withIncompleteFlow = ({
+export type WithIncompleteFlow = (
+	params: GetIncompleteFlowParams,
+) => WithIncompleteFlowHOC;
+
+export const withIncompleteFlow: WithIncompleteFlow = ({
 	flowKey,
 	getEntityId,
 }: GetIncompleteFlowParams): WithIncompleteFlowHOC =>

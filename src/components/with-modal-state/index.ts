@@ -1,11 +1,11 @@
 import { withStateHandlers, compose, setDisplayName } from 'recompose';
-import withPropsMapper from './withPropsMapper';
 import { get } from 'lodash';
+import withPropsMapper from '../with-props-mapper';
 import * as React from 'react';
 
 type ConditionFunc = (...any: any) => boolean;
 
-interface InitialModalState {
+export interface InitialModalState {
 	isLoading: boolean;
 	isVisible: boolean;
 }
@@ -21,27 +21,28 @@ interface EnhanceModalStateProps {
 	[propName: string]: ModalState;
 }
 
-export const initState = (visibleCondition: ConditionFunc, loadingCondition: ConditionFunc) => (
-	props: object,
-): InitialModalState => ({
+export const initState = (
+	visibleCondition: ConditionFunc,
+	loadingCondition: ConditionFunc,
+) => (props: object): InitialModalState => ({
 	isLoading: loadingCondition ? loadingCondition(props) : false,
 	isVisible: visibleCondition ? visibleCondition(props) : false,
 });
 
 export const stateUpdaters = {
-	showLoading: () => () => ({
+	showLoading: () => (): object => ({
 		isLoading: true,
 	}),
 
-	hideLoading: () => () => ({
+	hideLoading: () => (): object => ({
 		isLoading: false,
 	}),
 
-	showModal: () => () => ({
+	showModal: () => (): object => ({
 		isVisible: true,
 	}),
 
-	hideModal: () => () => ({
+	hideModal: () => (): object => ({
 		isVisible: false,
 	}),
 };
@@ -74,7 +75,10 @@ export default (
 	const loadingCondition = get(conditions, 'loadingCondition');
 	return compose(
 		setDisplayName('withModalState'),
-		withStateHandlers(initState(visibleCondition, loadingCondition), stateUpdaters),
+		withStateHandlers(
+			initState(visibleCondition, loadingCondition),
+			stateUpdaters,
+		),
 		withPropsMapper(propsName, ownPropsKeys),
 	);
 };

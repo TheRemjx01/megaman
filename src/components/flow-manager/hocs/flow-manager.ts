@@ -1,9 +1,9 @@
-import { FlowManager } from '@helpers/flow-manager/types';
+import { FlowManager } from './types';
 import {
 	getItemFromLocalStorage,
 	setItemToLocalStorage,
-} from '@helpers/flow-manager/local-storage';
-import { FLOW_MANAGER } from '@helpers/flow-manager/constants';
+} from './local-storage';
+import { FLOW_MANAGER } from './constants';
 
 export const getFlowManager = (): FlowManager =>
 	getItemFromLocalStorage({ item: FLOW_MANAGER }) as FlowManager;

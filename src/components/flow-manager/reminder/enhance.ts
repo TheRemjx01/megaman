@@ -1,12 +1,8 @@
 import { withRouter } from 'react-router-dom';
-import {
-	getIncompleteFlow,
-	resetSelectedFlowKeysHandlerV2,
-	withIncompleteFlow,
-} from '@helpers/index';
 import { withHandlers, withProps, compose } from 'recompose';
-import { ModalState } from '@shared/hocs';
-import { GetEntityId } from '@helpers/flow-manager/types';
+import { getIncompleteFlow, withIncompleteFlow } from '../hocs/get-flow-v2';
+import { GetEntityId } from '../hocs/types';
+import { resetSelectedFlowKeysHandlerV2 } from '../hocs/reset-flow-v2';
 
 interface WithIncompleteFlowDataParams {
 	flowKey: string;
@@ -31,17 +27,12 @@ export const withIncompleteFlowData = ({
 
 interface OnDiscardIncompleteFlowHandlerParams {
 	resetAgreementFlow: () => void;
-	incompleteFlowModalState: ModalState;
 }
 
 export const onDiscardIncompleteFlowHandler = ({
 	resetAgreementFlow,
-	incompleteFlowModalState,
 }: OnDiscardIncompleteFlowHandlerParams) => (): void => {
-	incompleteFlowModalState.showLoading();
 	resetAgreementFlow();
-	incompleteFlowModalState.hideLoading();
-	incompleteFlowModalState.hideModal();
 };
 
 interface ReactRouterType {
@@ -50,7 +41,6 @@ interface ReactRouterType {
 
 interface ConfirmRestoreIncompleteFlowParams {
 	history: ReactRouterType;
-	incompleteFlowModalState: ModalState;
 	firstIncompleteCurrentUrl: string;
 }
 

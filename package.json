@@ -1,13 +1,16 @@
 {
   "name": "@theremjx01/megaman",
   "version": "0.0.1",
-  "description": "Some cool React tools you may need ",
+  "descriptiyarn on": "Some cool React tools you may need ",
   "main": "dist/index",
+  "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc --project tsconfig.json",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint . --ext .ts",
-    "fix": "eslint . --ext .ts --fix"
+    "fix": "eslint . --ext .ts --fix",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "files": [
     "dist"
@@ -15,18 +18,26 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "antd": "^4.1.4",
     "lodash": "^4.17.15",
-    "module-alias": "^2.2.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.1.2",
     "recompose": "^0.30.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.9.0",
+    "@storybook/addon-actions": "^5.3.18",
+    "@storybook/addon-info": "^5.3.18",
+    "@storybook/addon-knobs": "^5.3.18",
+    "@storybook/addon-links": "^5.3.18",
+    "@storybook/addon-storysource": "^5.3.18",
+    "@storybook/addons": "^5.3.18",
+    "@storybook/react": "^5.3.18",
+    "@types/jest": "^25.2.1",
     "@types/lodash": "^4.14.150",
     "@typescript-eslint/eslint-plugin": "^2.29.0",
     "@typescript-eslint/parser": "^2.29.0",
+    "babel-loader": "^8.1.0",
     "eslint": "^6.8.0",
     "eslint-config-airbnb": "^18.1.0",
     "eslint-config-prettier": "^6.11.0",
@@ -36,10 +47,13 @@
     "eslint-plugin-react": "^7.19.0",
     "eslint-plugin-react-hooks": "^2.5.1",
     "eslint-plugin-shopify": "^35.1.0",
+    "jest": "^25.5.0",
     "prettier": "^2.0.5",
-    "source-map-loader": "^0.2.4",
+    "react-docgen-typescript-loader": "^3.7.2",
+    "ts-jest": "^25.4.0",
     "ts-loader": "^7.0.1",
-    "typescript": "^3.8.3"
+    "typescript": "^3.8.3",
+    "@storybook/theming": "latest"
   },
   "repository": {
     "type": "git",

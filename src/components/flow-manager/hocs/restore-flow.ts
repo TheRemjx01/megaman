@@ -3,10 +3,10 @@ import {
 	CURRENT_URL,
 	EXTRA_PROPS,
 	FLOW_MANAGER,
-} from '@helpers/flow-manager/constants';
-import { getItemFromLocalStorage } from '@helpers/flow-manager/local-storage';
+} from './constants';
+import { getItemFromLocalStorage } from './local-storage';
 import { get } from 'lodash';
-import { GetEntityId } from '@helpers/flow-manager/types';
+import { GetEntityId } from './types';
 import { withHandlers } from 'recompose';
 import * as React from 'react';
 
@@ -29,7 +29,11 @@ type RestoreCurrentStepHOC = (
 	Component: React.FunctionComponent,
 ) => React.FunctionComponent<WithRestoreCurrentStepProps>;
 
-export const restoreCurrentStep = ({
+export type RestoreCurrentStep = (
+	params: RestoreCurrentStepParams,
+) => (props: object) => RestoreCurrentStepOutput;
+
+export const restoreCurrentStep: RestoreCurrentStep = ({
 	flowKey,
 	getEntityId,
 }: RestoreCurrentStepParams) => (props: object): RestoreCurrentStepOutput => {
@@ -52,7 +56,11 @@ export const restoreCurrentStep = ({
 	};
 };
 
-export const withRestoreCurrentStepHandler = ({
+export type WithRestoreCurrentStepHandler = (
+	params: RestoreCurrentStepParams,
+) => RestoreCurrentStepHOC;
+
+export const withRestoreCurrentStepHandler: WithRestoreCurrentStepHandler = ({
 	flowKey,
 	getEntityId,
 }: RestoreCurrentStepParams): RestoreCurrentStepHOC =>

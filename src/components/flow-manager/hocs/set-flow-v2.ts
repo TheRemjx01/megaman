@@ -1,11 +1,11 @@
-import { getUpdateExtraProps } from '@helpers/flow-manager/extra-props';
+import { getUpdateExtraProps } from './extra-props';
 import { get } from 'lodash';
-import { FlowManager, GetEntityId } from '@helpers/flow-manager/types';
+import { FlowManager, GetEntityId } from './types';
 import { withHandlers, withProps } from 'recompose';
 import {
 	getFlowManager,
 	setFlowManager,
-} from '@helpers/flow-manager/flow-manager';
+} from './flow-manager';
 
 interface GetUpdateFlowParams {
 	flow: string;

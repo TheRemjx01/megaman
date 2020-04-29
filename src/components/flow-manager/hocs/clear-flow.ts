@@ -1,8 +1,8 @@
-import { setItemToLocalStorage } from '@helpers/flow-manager/local-storage';
-import { FLOW_MANAGER } from '@helpers/flow-manager/constants';
 import { withHandlers } from 'recompose';
-import { HOC } from '@selfTypes/index';
+import { HOC } from '../../../types';
 import * as React from 'react';
+import { setItemToLocalStorage } from './local-storage';
+import { FLOW_MANAGER } from './constants';
 
 export const clearFlowManagerHandler = () => (): void => {
 	setItemToLocalStorage({

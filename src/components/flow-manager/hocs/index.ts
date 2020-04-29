@@ -1,25 +1,44 @@
-export { withClearFlowManagerHandlers } from '@helpers/flow-manager/clear-flow';
+export { withClearFlowManagerHandlers } from './clear-flow';
 export {
 	getIncompleteFlow,
 	withIncompleteFlow,
-} from '@helpers/flow-manager/get-flow-v2';
+	GetIncompleteFlow,
+	WithIncompleteFlow,
+} from './get-flow-v2';
 
 export {
 	restoreCurrentStep,
+	RestoreCurrentStep,
 	withRestoreCurrentStepHandler,
-} from '@helpers/flow-manager/restore-flow';
+	WithRestoreCurrentStepHandler,
+} from './restore-flow';
 
 export {
 	resetFlowV2,
+	ResetFlowV2,
 	resetSelectedFlowKeysHandlerV2,
-} from '@helpers/flow-manager/reset-flow-v2';
+	ResetSelectedFlowKeysHandlerV2,
+} from './reset-flow-v2';
 
 export {
 	withSetLocalStorageStepHandlersV2,
 	withSaveCurrentStepV2,
 	getUpdateFlow,
 	setStep,
-} from '@helpers/flow-manager/set-flow-v2';
+} from './set-flow-v2';
+
+import { ResetFlowV2, resetFlowV2 } from './reset-flow-v2';
+import { GetIncompleteFlow, getIncompleteFlow } from './get-flow-v2';
+
+export const flowManager: {
+	resetFlowV2: ResetFlowV2;
+	getIncompleteFlow: GetIncompleteFlow;
+} = {
+	resetFlowV2,
+	getIncompleteFlow,
+};
+
+export * from './types';
 
 /** @Description: flowManager in localStorage format in localStorage:
  *  flowManager = {
