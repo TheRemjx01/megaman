@@ -2,3 +2,4 @@ src
 .eslintignore
 .eslintrc.js
 .prettierrc
+storybook-static
