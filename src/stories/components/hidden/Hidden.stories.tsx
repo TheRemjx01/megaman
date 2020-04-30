@@ -1,6 +1,6 @@
-import Hidden from './index';
 import * as React from 'react';
 import { withKnobs, boolean, text } from '@storybook/addon-knobs';
+import { Hidden } from '../../../index';
 
 export default {
 	title: 'Hidden',

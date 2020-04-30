@@ -34,8 +34,8 @@ export const getIncompleteFlow: GetIncompleteFlow = ({
 };
 
 type WithIncompleteFlowHOC = (
-	Component: React.FunctionComponent,
-) => React.FunctionComponent<WithIncompleteFlowHOCProps>;
+	Component: React.FunctionComponent<WithIncompleteFlowHOCProps>,
+) => any;
 
 export type WithIncompleteFlow = (
 	params: GetIncompleteFlowParams,

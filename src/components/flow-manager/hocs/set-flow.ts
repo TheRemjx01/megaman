@@ -1,15 +1,16 @@
 import { getUpdateExtraProps } from './extra-props';
 import { get } from 'lodash';
 import { FlowManager, GetEntityId } from './types';
-import { withHandlers, withProps } from 'recompose';
+import { withHandlers } from 'recompose';
 import { getFlowManager, setFlowManager } from './flow-manager';
+import * as React from 'react';
 
 type GetCurrentUrl = (props: object) => any;
 
 interface GetUpdateFlowParams {
 	flow: string;
 	step: string;
-	extraProps: string[];
+	extraPropKeys: string[];
 	flowManager: any;
 	getCurrentUrl: GetCurrentUrl;
 }
@@ -17,7 +18,7 @@ interface GetUpdateFlowParams {
 export const getUpdateFlow = ({
 	flow,
 	step,
-	extraProps = [],
+	extraPropKeys = [],
 	flowManager,
 	getCurrentUrl,
 }: GetUpdateFlowParams) => (props: object): FlowManager => {
@@ -28,7 +29,7 @@ export const getUpdateFlow = ({
 
 	updateFlow.extraProps = getUpdateExtraProps(
 		updateFlow.extraProps,
-		extraProps,
+		extraPropKeys,
 	)(props);
 
 	return {
@@ -41,7 +42,7 @@ interface SetStepParams {
 	flow: string;
 	step: string;
 	getEntityId: GetEntityId;
-	extraProps?: any[];
+	extraPropKeys?: any[];
 	getCurrentUrl: GetCurrentUrl;
 }
 
@@ -49,7 +50,7 @@ export const setStep = ({
 	flow,
 	step,
 	getEntityId,
-	extraProps = [],
+	extraPropKeys = [],
 	getCurrentUrl,
 }: SetStepParams) => (props: object): void => {
 	const entityId = getEntityId(props);
@@ -61,7 +62,7 @@ export const setStep = ({
 		[entityId]: getUpdateFlow({
 			flow,
 			step,
-			extraProps,
+			extraPropKeys,
 			flowManager: targetFlow,
 			getCurrentUrl,
 		})(props),
@@ -70,36 +71,28 @@ export const setStep = ({
 	setFlowManager(body as FlowManager);
 };
 
-export const withSaveCurrentStepV2 = ({
-	flow,
-	step,
-	getEntityId,
-	extraProps,
-	getCurrentUrl,
-}: SetStepParams) =>
-	withProps(setStep({ flow, step, getEntityId, extraProps, getCurrentUrl }));
-
 interface WithSetLocalStorageProps {
-	setLocalStorageStep: (props: SetStepParams) => any;
+	setLocalStorageStep: () => void;
 }
 
 type WithSetLocalStorageHOC = (
-	Component: any,
-) => (props: WithSetLocalStorageProps) => any;
+	Component: React.FC<WithSetLocalStorageProps>,
+) => (props) => any;
 
-export const withSetLocalStorageStepHandlersV2 = ({
+export const withSetLocalStorageStepHandlers = ({
 	flow,
 	step,
 	getEntityId,
-	extraProps,
+	extraPropKeys,
 	getCurrentUrl,
 }: SetStepParams): WithSetLocalStorageHOC =>
 	withHandlers({
-		setLocalStorageStep: setStep({
-			flow,
-			step,
-			getEntityId,
-			extraProps,
-			getCurrentUrl,
-		}),
+		setLocalStorageStep: (props) => (): void =>
+			setStep({
+				flow,
+				step,
+				getEntityId,
+				extraPropKeys,
+				getCurrentUrl,
+			})(props),
 	});

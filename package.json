@@ -27,12 +27,14 @@
   "devDependencies": {
     "@babel/core": "^7.9.0",
     "@storybook/addon-actions": "^5.3.18",
+    "@storybook/addon-console": "^1.2.1",
     "@storybook/addon-info": "^5.3.18",
     "@storybook/addon-knobs": "^5.3.18",
     "@storybook/addon-links": "^5.3.18",
     "@storybook/addon-storysource": "^5.3.18",
     "@storybook/addons": "^5.3.18",
     "@storybook/react": "^5.3.18",
+    "@storybook/theming": "latest",
     "@types/jest": "^25.2.1",
     "@types/lodash": "^4.14.150",
     "@typescript-eslint/eslint-plugin": "^2.29.0",
@@ -52,8 +54,7 @@
     "react-docgen-typescript-loader": "^3.7.2",
     "ts-jest": "^25.4.0",
     "ts-loader": "^7.0.1",
-    "typescript": "^3.8.3",
-    "@storybook/theming": "latest"
+    "typescript": "^3.8.3"
   },
   "repository": {
     "type": "git",

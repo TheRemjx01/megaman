@@ -21,11 +21,10 @@ export {
 } from './reset-flow-v2';
 
 export {
-	withSetLocalStorageStepHandlersV2,
-	withSaveCurrentStepV2,
+	withSetLocalStorageStepHandlers,
 	getUpdateFlow,
 	setStep,
-} from './set-flow-v2';
+} from './set-flow';
 
 import { ResetFlowV2, resetFlowV2 } from './reset-flow-v2';
 import { GetIncompleteFlow, getIncompleteFlow } from './get-flow-v2';

@@ -1270,6 +1270,13 @@
     react-inspector "^4.0.0"
     uuid "^3.3.2"
 
+"@storybook/addon-console@^1.2.1":
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-console/-/addon-console-1.2.1.tgz#f338401661b4636118b13839848061e996d4e104"
+  integrity sha512-2iDbDTipWonvRpIqLLntfhCGvawFFvoG1xyErpyL7K/HRdQ1zzIvR1Qm83S7TK8Vg+RzZWm4wcDbxx7WOsFCNg==
+  dependencies:
+    global "^4.3.2"
+
 "@storybook/addon-info@^5.3.18":
   version "5.3.18"
   resolved "https://registry.yarnpkg.com/@storybook/addon-info/-/addon-info-5.3.18.tgz#2b02c43eeb79770781eea82104c32a4f12a72da0"
@@ -1350,7 +1357,7 @@
     regenerator-runtime "^0.13.3"
     util-deprecate "^1.0.2"
 
-"@storybook/addons@5.3.18", "@storybook/addons@^5.3.14", "@storybook/addons@^5.3.18":
+"@storybook/addons@5.3.18", "@storybook/addons@^5.3.18":
   version "5.3.18"
   resolved "https://registry.yarnpkg.com/@storybook/addons/-/addons-5.3.18.tgz#5cbba6407ef7a802041c5ee831473bc3bed61f64"
   integrity sha512-ZQjDgTUDFRLvAiBg2d8FgPgghfQ+9uFyXQbtiGlTBLinrPCeQd7J86qiUES0fcGoohCCw0wWKtvB0WF2z1XNDg==
@@ -1430,14 +1437,14 @@
     ts-dedent "^1.1.0"
     util-deprecate "^1.0.2"
 
-"@storybook/client-logger@5.3.18", "@storybook/client-logger@^5.3.14":
+"@storybook/client-logger@5.3.18":
   version "5.3.18"
   resolved "https://registry.yarnpkg.com/@storybook/client-logger/-/client-logger-5.3.18.tgz#27c9d09d788965db0164be6e168bc3f03adbf88f"
   integrity sha512-RZjxw4uqZX3Yk27IirbB/pQG+wRsQSSRlKqYa8KQ5bSanm4IrcV9VA1OQbuySW9njE+CexAnakQJ/fENdmurNg==
   dependencies:
     core-js "^3.0.1"
 
-"@storybook/components@5.3.18", "@storybook/components@^5.3.14":
+"@storybook/components@5.3.18":
   version "5.3.18"
   resolved "https://registry.yarnpkg.com/@storybook/components/-/components-5.3.18.tgz#528f6ab1660981e948993a04b407a6fad7751589"
   integrity sha512-LIN4aVCCDY7klOwtuqQhfYz4tHaMADhXEzZpij+3r8N68Inck6IJ1oo9A9umXQPsTioQi8e6FLobH1im90j/2A==
@@ -1464,7 +1471,7 @@
     simplebar-react "^1.0.0-alpha.6"
     ts-dedent "^1.1.0"
 
-"@storybook/core-events@5.3.18", "@storybook/core-events@^5.3.14":
+"@storybook/core-events@5.3.18":
   version "5.3.18"
   resolved "https://registry.yarnpkg.com/@storybook/core-events/-/core-events-5.3.18.tgz#e5d335f8a2c7dd46502b8f505006f1e111b46d49"
   integrity sha512-uQ6NYJ5WODXK8DJ7m8y3yUAtWB3n+6XtYztjY+tdkCsLYvTYDXNS+epV+f5Hu9+gB+/Dm+b5Su4jDD+LZB2QWA==
@@ -1627,7 +1634,7 @@
     prop-types "^15.7.2"
     regenerator-runtime "^0.13.3"
 
-"@storybook/theming@5.3.18", "@storybook/theming@^5.3.14":
+"@storybook/theming@5.3.18", "@storybook/theming@latest":
   version "5.3.18"
   resolved "https://registry.yarnpkg.com/@storybook/theming/-/theming-5.3.18.tgz#35e78de79d9cf8f1248af0dd1c7fa60555761312"
   integrity sha512-lfFTeLoYwLMKg96N3gn0umghMdAHgJBGuk2OM8Ll84yWtdl9RGnzfiI1Fl7Cr5k95dCF7drLJlJCao1VxUkFSA==
@@ -3809,11 +3816,6 @@ core-js@^1.0.0:
   version "1.2.7"
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-1.2.7.tgz#652294c14651db28fa93bd2d5ff2983a4f08c636"
   integrity sha1-ZSKUwUZR2yj6k70tX/KYOk8IxjY=
-
-core-js@^2.6.5:
-  version "2.6.11"
-  resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.6.11.tgz#38831469f9922bded8ee21c9dc46985e0399308c"
-  integrity sha512-5wjnpaT/3dV+XB4borEsnAYQchn00XSgTAWKDkEqv+K8KevjbzmofK6hfJ9TZIlpj2N0xQpazy7PiRQiWHqzWg==
 
 core-js@^3.0.1, core-js@^3.0.4:
   version "3.6.5"
@@ -10171,21 +10173,6 @@ store2@^2.7.1:
   version "2.11.1"
   resolved "https://registry.yarnpkg.com/store2/-/store2-2.11.1.tgz#118645f1b5e38d20604852362183955e360a5893"
   integrity sha512-llZqXAXjG2E4FvWsZxFmBDfh6kqQuGFZm64TX23qW02Hf4dyElhDEbYx1IIVTEMKWrrDnDA9oqOjY8WHo2NgcA==
-
-storybook-addon-themes@^5.4.1:
-  version "5.4.1"
-  resolved "https://registry.yarnpkg.com/storybook-addon-themes/-/storybook-addon-themes-5.4.1.tgz#de61b7f243eb80bfd6699eadca351f669d43593e"
-  integrity sha512-pSMiaXxe022Aq9pa2Xx97N0d49ihpgo6+dzlZOj9Vtz3ygoN5M8arnNSppp430lbhpOKfGSK3p8WPNMkfNBnWQ==
-  dependencies:
-    "@storybook/addons" "^5.3.14"
-    "@storybook/client-logger" "^5.3.14"
-    "@storybook/components" "^5.3.14"
-    "@storybook/core-events" "^5.3.14"
-    "@storybook/theming" "^5.3.14"
-    core-js "^2.6.5"
-    global "^4.3.2"
-    memoizerific "^1.11.3"
-    util-deprecate "^1.0.2"
 
 stream-browserify@^2.0.1:
   version "2.0.2"

@@ -16,7 +16,7 @@ module.exports = {
     config.resolve.extensions.push('.ts', '.tsx');
     return config;
   },
-  stories: ['../src/**/*.stories.tsx'],
+  stories: ['../src/stories/**/*.stories.tsx'],
   addons: [
     {
       name: '@storybook/addon-storysource',

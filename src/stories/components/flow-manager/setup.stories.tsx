@@ -1,5 +1,5 @@
-import { setStep } from '../hocs';
-import { clearFlowManagerHandler } from '../hocs/clear-flow';
+import { setStep } from '../../../components/flow-manager/hocs';
+import { clearFlowManagerHandler } from '../../../components/flow-manager/hocs/clear-flow';
 
 export type ReactRouterMatch = {
 	params: {

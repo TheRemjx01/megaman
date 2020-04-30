@@ -1,10 +1,9 @@
 import * as React from 'react';
 import { useState } from 'react';
 import { withKnobs, text, number, boolean } from '@storybook/addon-knobs';
-import FlowManagerReminder from './index';
-import { ReminderProps } from './FlowManagerReminder';
 import { prepareLocalStorage, ReactRouterMatch } from './setup.stories';
-import { Hidden } from '../../../index';
+import { FlowManagerReminder, Hidden } from '../../../index';
+import { ReminderProps } from '../../../components/flow-manager/reminder/FlowManagerReminder';
 
 export default {
 	title: 'FlowManagerReminder',
@@ -25,9 +24,19 @@ const SimpleReminder: React.FC<ReminderProps> = ({
 	};
 	return (
 		<Hidden when={!visible}>
-			<div style={{ color: 'white', border: '1px solid white' }}>
+			<div
+				style={{
+					color: 'white',
+					border: '1px solid white',
+					position: 'absolute',
+					top: 25,
+					right: 25,
+					width: '30%',
+					padding: 25,
+				}}
+			>
 				<p>Incomplete flow reminder</p>
-				<p>
+				<p style={{ background: 'black', padding: 10 }}>
 					<code>{JSON.stringify(incompleteFlow)}</code>
 				</p>
 				<button onClick={onResetFlowClick}>Reset flow</button>
