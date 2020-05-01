@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useState } from 'react';
 import { withKnobs, text, number, boolean } from '@storybook/addon-knobs';
-import { prepareLocalStorage, ReactRouterMatch } from './setup.stories';
+import { prepareIncompleteFlow, ReactRouterMatch } from './setup.stories';
 import { FlowManagerReminder, Hidden } from '../../../index';
 import { ReminderProps } from '../../../components/flow-manager/reminder/FlowManagerReminder';
 
@@ -10,6 +10,8 @@ export default {
 	component: FlowManagerReminder,
 	decorators: [withKnobs],
 };
+
+const whiteColorTextStyle = { color: 'white' };
 
 const SimpleReminder: React.FC<ReminderProps> = ({
 	resetFlow,
@@ -50,7 +52,7 @@ const SimpleReminder: React.FC<ReminderProps> = ({
 
 export const whenHasIncompleteFlow: React.FC<void> = () => {
 	const EXAMPLE_FLOW_ID = number('flow-id', 1);
-	prepareLocalStorage({
+	prepareIncompleteFlow({
 		flowKey: text('flow-key', 'example-flow'),
 		flowStep: text('flow-step', 'example-step'),
 		flowId: EXAMPLE_FLOW_ID,
@@ -64,13 +66,26 @@ export const whenHasIncompleteFlow: React.FC<void> = () => {
 		props.match.params.id as number;
 
 	return (
-		<FlowManagerReminder
-			flowKey="example-flow"
-			getEntityId={getEntityId}
-			Reminder={SimpleReminder}
-			{...mockParentProps}
-		>
-			<p style={{ color: 'white' }}>Page content</p>
-		</FlowManagerReminder>
+		<div style={whiteColorTextStyle}>
+			<FlowManagerReminder
+				flowKey="example-flow"
+				getEntityId={getEntityId}
+				Reminder={SimpleReminder}
+				{...mockParentProps}
+			>
+				<h2>FlowManagerReminder</h2>
+				<p>
+					Features:
+					<ul>
+						<li>Auto detect incomplete flow by flowKey</li>
+						<li>
+							By accept Reminder as a prop, you can custom UI/UX as well as use
+							action that FlowManagerReminder provide: <br />
+							[resetFlow, confirmRestoreIncompleteFlow, incompleteFlow]
+						</li>
+					</ul>
+				</p>
+			</FlowManagerReminder>
+		</div>
 	);
 };

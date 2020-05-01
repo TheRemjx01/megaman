@@ -38,7 +38,7 @@ export const getUpdateFlow = ({
 	};
 };
 
-interface SetStepParams {
+interface SetFlowParams {
 	flow: string;
 	step: string;
 	getEntityId: GetEntityId;
@@ -46,13 +46,13 @@ interface SetStepParams {
 	getCurrentUrl: GetCurrentUrl;
 }
 
-export const setStep = ({
+export const setFlowStep = ({
 	flow,
 	step,
 	getEntityId,
 	extraPropKeys = [],
 	getCurrentUrl,
-}: SetStepParams) => (props: object): void => {
+}: SetFlowParams) => (props: object): void => {
 	const entityId = getEntityId(props);
 	const flowManager = getFlowManager();
 	const targetFlow = get(flowManager, `${entityId}`, {});
@@ -71,24 +71,22 @@ export const setStep = ({
 	setFlowManager(body as FlowManager);
 };
 
-interface WithSetLocalStorageProps {
-	setLocalStorageStep: () => void;
+interface WithSetFlowProps {
+	setFlowStep: () => void;
 }
 
-type WithSetLocalStorageHOC = (
-	Component: React.FC<WithSetLocalStorageProps>,
-) => (props) => any;
+type WithSetFlowHOC = (Component: React.FC<WithSetFlowProps>) => (props) => any;
 
-export const withSetLocalStorageStepHandlers = ({
+export const withSetFlowStepHandlers = ({
 	flow,
 	step,
 	getEntityId,
 	extraPropKeys,
 	getCurrentUrl,
-}: SetStepParams): WithSetLocalStorageHOC =>
+}: SetFlowParams): WithSetFlowHOC =>
 	withHandlers({
-		setLocalStorageStep: (props) => (): void =>
-			setStep({
+		setFlowStep: (props) => (): void =>
+			setFlowStep({
 				flow,
 				step,
 				getEntityId,

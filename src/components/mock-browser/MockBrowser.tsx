@@ -7,22 +7,24 @@ export type Route = {
 	component: any;
 };
 
+export type SetUrl = (url: string) => void;
+
 export type WithSetUrlProps = {
-	setUrl: (url: string) => void;
+	setUrl: SetUrl;
 };
 
-type MockBrowserProps = {
-	baseUrl?: string;
+export type MockBrowserProps = {
+	domain?: string;
 	initialUrl?: string;
-	QuickAccess: React.FC<WithSetUrlProps>;
+	QuickAccess?: React.FC<WithSetUrlProps>;
 	style?: object;
 	Routes: Route[];
 };
 
 export const MockBrowser = ({
-	baseUrl = 'https://trmx01.demo.io/',
+	domain = 'https://trmx01.demo.io/',
 	initialUrl = '',
-	QuickAccess,
+	QuickAccess = () => null,
 	style,
 	Routes,
 }: MockBrowserProps) => {
@@ -33,7 +35,7 @@ export const MockBrowser = ({
 				<span>
 					<label>Url:</label>
 					<input
-						value={`${baseUrl}${currentUrl}`}
+						value={`${domain}${currentUrl}`}
 						style={{ minWidth: '400px' }}
 						disabled
 					/>

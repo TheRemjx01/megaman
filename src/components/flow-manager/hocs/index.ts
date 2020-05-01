@@ -4,7 +4,7 @@ export {
 	withIncompleteFlow,
 	GetIncompleteFlow,
 	WithIncompleteFlow,
-} from './get-flow-v2';
+} from './get-flow';
 
 export {
 	restoreCurrentStep,
@@ -21,13 +21,13 @@ export {
 } from './reset-flow-v2';
 
 export {
-	withSetLocalStorageStepHandlers,
+	withSetFlowStepHandlers,
 	getUpdateFlow,
-	setStep,
-} from './set-flow';
+	setFlowStep,
+} from './set-flow-step';
 
 import { ResetFlowV2, resetFlowV2 } from './reset-flow-v2';
-import { GetIncompleteFlow, getIncompleteFlow } from './get-flow-v2';
+import { GetIncompleteFlow, getIncompleteFlow } from './get-flow';
 
 export const flowManager: {
 	resetFlowV2: ResetFlowV2;
