@@ -27,14 +27,30 @@ export {
 } from './set-flow-step';
 
 import { ResetFlowV2, resetFlowV2 } from './reset-flow-v2';
-import { GetIncompleteFlow, getIncompleteFlow } from './get-flow';
+import {
+	GetIncompleteFlow,
+	getIncompleteFlow,
+	withIncompleteFlow,
+	WithIncompleteFlow,
+} from './get-flow';
+import {
+	SetFlowParams,
+	WithSetFlowHOC,
+	withSetFlowStepHandlers,
+} from './set-flow-step';
 
-export const flowManager: {
+export type FlowManagerType = {
 	resetFlowV2: ResetFlowV2;
 	getIncompleteFlow: GetIncompleteFlow;
-} = {
+	withIncompleteFlow: WithIncompleteFlow;
+	withSetFlowStepHandlers: (params: SetFlowParams) => WithSetFlowHOC;
+};
+
+export const flowManager: FlowManagerType = {
 	resetFlowV2,
 	getIncompleteFlow,
+	withIncompleteFlow,
+	withSetFlowStepHandlers,
 };
 
 export * from './types';

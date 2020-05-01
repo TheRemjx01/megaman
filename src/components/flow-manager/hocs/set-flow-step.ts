@@ -38,7 +38,7 @@ export const getUpdateFlow = ({
 	};
 };
 
-interface SetFlowParams {
+export interface SetFlowParams {
 	flow: string;
 	step: string;
 	getEntityId: GetEntityId;
@@ -75,7 +75,7 @@ interface WithSetFlowProps {
 	setFlowStep: () => void;
 }
 
-type WithSetFlowHOC = (Component: React.FC<WithSetFlowProps>) => (props) => any;
+export type WithSetFlowHOC = (Component: React.FC<WithSetFlowProps>) => any;
 
 export const withSetFlowStepHandlers = ({
 	flow,

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useEffect } from 'react';
 import { withKnobs } from '@storybook/addon-knobs';
-import { withSetFlowStepHandlers } from '../../../components/flow-manager/hocs';
+import { flowManager } from '../../../components/flow-manager/hocs';
 
 export default {
 	title: 'withSetFlowStepHandlers',
@@ -19,7 +19,7 @@ const FLOW = {
 };
 
 export const basicUsage = () => {
-	const WithSetFlowStep = withSetFlowStepHandlers({
+	const WithSetFlowStep = flowManager.withSetFlowStepHandlers({
 		flow: FLOW.name,
 		step: FLOW.step1,
 		getEntityId: () => 1,

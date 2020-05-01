@@ -3,14 +3,10 @@ import { Fragment, useEffect, useState } from 'react';
 import { boolean, withKnobs } from '@storybook/addon-knobs';
 import { withConsole } from '@storybook/addon-console';
 import { get } from 'lodash';
-import { FlowManagerReminder, Hidden } from '../../../index';
-import {
-	withIncompleteFlow,
-	withSetFlowStepHandlers,
-} from '../../../components/flow-manager/hocs';
-import { ReminderProps } from '../../../components/flow-manager/reminder/FlowManagerReminder';
+import { flowManager, FlowManagerReminder, Hidden } from '../../../index';
 import { MockBrowser, WithSetUrlProps } from '../../../components/mock-browser';
-import { WithIncompleteFlowProps } from '../../../components/flow-manager/hocs/get-flow-v2';
+import { WithIncompleteFlowProps } from '../../../components/flow-manager/hocs/get-flow';
+import { ReminderProps } from '../../../components/flow-manager/reminder';
 
 const addConsole = (storyFn, context): void => withConsole()(storyFn)(context);
 
@@ -29,7 +25,7 @@ const FLOW = {
 	pageUrl: 'flow-page',
 };
 
-const Step1 = withSetFlowStepHandlers({
+const Step1 = flowManager.withSetFlowStepHandlers({
 	flow: FLOW.name,
 	step: FLOW.step1,
 	getEntityId: () => FLOW.mockEntityId,
@@ -42,7 +38,7 @@ const Step1 = withSetFlowStepHandlers({
 	return <p>Step 1</p>;
 });
 
-const Step2 = withSetFlowStepHandlers({
+const Step2 = flowManager.withSetFlowStepHandlers({
 	flow: FLOW.name,
 	step: FLOW.step2,
 	getEntityId: () => FLOW.mockEntityId,
@@ -95,7 +91,7 @@ const FlowPage = ({
 	);
 };
 
-const RestoredFlowPage = withIncompleteFlow({
+const RestoredFlowPage = flowManager.withIncompleteFlow({
 	flowKey: FLOW.name,
 	getEntityId: () => FLOW.mockEntityId,
 })(FlowPage);

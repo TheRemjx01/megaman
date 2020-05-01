@@ -1,5 +1,6 @@
 import * as React from 'react';
 import FlowManagerReminder, { ReminderProps } from './FlowManagerReminder';
+
 import enhance from './enhance';
 import { GetEntityId } from '../hocs';
 
@@ -18,4 +19,5 @@ const enhancedFlowManagerReminder: FlowManagerReminderType = enhance(
 	FlowManagerReminder,
 );
 
+export { ReminderProps, FlowManagerProps } from './FlowManagerReminder';
 export default enhancedFlowManagerReminder;
