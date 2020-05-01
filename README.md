@@ -3,7 +3,7 @@ Megaman is a collection of some cool React component that simplify logic handlin
 
 ## Install
 ```npm
-npm i @theremjx01/megaman
+npm i @theremjx01/megaman --save
 ```
 or with yarn:
 ```npm
