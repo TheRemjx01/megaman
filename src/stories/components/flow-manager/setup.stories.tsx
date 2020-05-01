@@ -1,5 +1,4 @@
 import { flowManager } from '../../../components/flow-manager/hocs';
-import { flowManager } from '../../../components/flow-manager/hocs';
 
 export type ReactRouterMatch = {
 	params: {
