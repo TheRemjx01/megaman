@@ -5,8 +5,8 @@ import { withConsole } from '@storybook/addon-console';
 import { get } from 'lodash';
 import { flowManager, FlowManagerReminder, Hidden } from '../../../index';
 import { MockBrowser, WithSetUrlProps } from '../../../components/mock-browser';
-import { WithIncompleteFlowProps } from '../../../components/flow-manager/hocs/get-flow';
 import { ReminderProps } from '../../../components/flow-manager/reminder';
+import { WithIncompleteFlowProps } from '../../../components/flow-manager/hocs';
 
 const addConsole = (storyFn, context): void => withConsole()(storyFn)(context);
 

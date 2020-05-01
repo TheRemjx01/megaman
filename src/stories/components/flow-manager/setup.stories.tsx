@@ -1,4 +1,4 @@
-import { clearFlowManagerHandler } from '../../../components/flow-manager/hocs/clear-flow';
+import { flowManager } from '../../../components/flow-manager/hocs';
 import { flowManager } from '../../../components/flow-manager/hocs';
 
 export type ReactRouterMatch = {
@@ -33,6 +33,6 @@ export const prepareIncompleteFlow = ({
 				props.location.url,
 		})(mockProps);
 	} else {
-		clearFlowManagerHandler()();
+		flowManager.clearFlowManagerHandler()();
 	}
 };

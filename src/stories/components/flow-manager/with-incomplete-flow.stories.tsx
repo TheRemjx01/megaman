@@ -1,7 +1,9 @@
 import * as React from 'react';
 import { withKnobs } from '@storybook/addon-knobs';
-import { flowManager } from '../../../components/flow-manager/hocs';
-import { WithIncompleteFlowProps } from '../../../components/flow-manager/hocs/get-flow';
+import {
+	flowManager,
+	WithIncompleteFlowProps,
+} from '../../../components/flow-manager/hocs';
 
 export default {
 	title: 'withIncompleteFlow',

@@ -1,4 +1,5 @@
 import {
+	clearFlowManagerHandler,
 	ClearFlowManagerHandlersHOC,
 	withClearFlowManagerHandlers,
 } from './clear-flow';
@@ -24,26 +25,32 @@ import {
 } from './set-flow-step';
 
 export type FlowManagerType = {
-	resetFlowV2: ResetFlow;
+	resetFlow: ResetFlow;
 	getIncompleteFlow: GetIncompleteFlow;
 	withIncompleteFlow: WithIncompleteFlow;
 	withSetFlowStepHandlers: (params: SetFlowParams) => WithSetFlowHOC;
 	resetSelectedFlowKeysHandler: ResetSelectedFlowKeysHandler;
 	withClearFlowManagerHandlers: () => ClearFlowManagerHandlersHOC;
 	setFlowStep: SetFlowStep;
+	clearFlowManagerHandler: () => () => void;
 };
 
 export const flowManager: FlowManagerType = {
-	resetFlowV2: resetFlow,
+	resetFlow,
 	getIncompleteFlow,
 	withIncompleteFlow,
 	withSetFlowStepHandlers,
 	setFlowStep,
 	resetSelectedFlowKeysHandler,
 	withClearFlowManagerHandlers,
+	clearFlowManagerHandler,
 };
 
-export { GetIncompleteFlow, WithIncompleteFlow } from './get-flow';
+export {
+	GetIncompleteFlow,
+	WithIncompleteFlow,
+	WithIncompleteFlowProps,
+} from './get-flow';
 export {
 	RestoreCurrentStep,
 	WithRestoreCurrentStepHandler,

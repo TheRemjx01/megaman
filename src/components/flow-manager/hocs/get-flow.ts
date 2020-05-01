@@ -13,10 +13,6 @@ export interface GetIncompleteFlowOutput {
 	incompleteFlow: FlowData;
 }
 
-export interface WithIncompleteFlowHOCProps extends GetIncompleteFlowOutput {
-	[otherProp: string]: any;
-}
-
 export type GetIncompleteFlow = (
 	params: GetIncompleteFlowParams,
 ) => (props: object) => GetIncompleteFlowOutput;
