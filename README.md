@@ -76,7 +76,7 @@ export type ReminderComponent = (props: {
 
 export interface FlowManagerReminderProps {
 	flowKey: string;
-	Reminder: ReminderComponent; 
+	Reminder: ReminderComponent; // allow you to customize UI/UXReminder component by yourself. Parent component will pass [incompleteFlow, resetFlow, restoreFlow] then let you to make decision by yourself
 	extraReminderProps?: any;
 	getEntityId: (props?: object) => id: string | number;
 }
@@ -98,16 +98,44 @@ export type Route = {
 };
 
 export type MockBrowserProps = {
-	domain?: string;
-	initialUrl?: string;
-	QuickAccess?: React.FC<WithSetUrlProps>;
-	style?: object;
-	Routes: Route[];
+	domain?: string; // domain url that you want to display on address bar
+	initialUrl?: string; // initial url that display, ie: index.html
+	QuickAccess?: React.FC<WithSetUrlProps>; // area next to the address bar that you can custom yourself - <usually some link or button>. Access setUrl as props to let you navigate between
+	style?: object; // customized style of browser
+	Routes: Route[]; // defined {url, component} so when the mockBrowser url hit the route url, the component will be displayed 
 };
 ```
 
 ### Higher-order Components
 #### `withIncompleteFlow`
+A higher-order component that let your component access to incompleteFlow data which identified by flowKey.
+
+```
+export type WithIncompleteFlow = (
+	{
+       flowKey: string, // key that identify flow 
+       getEntityId: (props?: object) => string | number, // a func that help to get id of entity, can access to all props of component
+	},
+) => (Component: React.Component) => React.Node | React.Element;
+```
+
+Example:
+
+```typescript jsx
+import {flowManager} from '@theremjx01/megaman';
+
+const EnhancedComponent =  flowManager.withIncompleteFlow({
+		flowKey: 'check-in',
+		getEntityId: (props) => props.match.params.id,
+	})(({incompleteFlow}) => {
+      return (
+        <p>{JSON.stringify(incompleteFlow)}</p>
+      )  
+	}
+	);
+```
+
+
 
 #### `withSetFlowStepHandlers`
-
+A higher-order component that help you to save flow state, step to localStorage, then you can go to it later.
