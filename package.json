@@ -1,6 +1,6 @@
 {
   "name": "@theremjx01/megaman",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "descriptiyarn on": "Some cool React tools you may need ",
   "main": "dist/index",
   "types": "dist/index.d.ts",
