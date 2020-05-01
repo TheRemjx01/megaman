@@ -12,7 +12,7 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "clean-megaman-storybook":  "rm -rf ../theremjx01.github.io/megaman",
-    "publish-to-profile": "mkdir ../theremjx01.github.io/megaman && cp -r ./storybook-static ../theremjx01.github.io/megaman/"
+    "publish-to-profile": "mkdir ../theremjx01.github.io/megaman && cp -r ./storybook-static/. ../theremjx01.github.io/megaman/"
   },
   "files": [
     "dist"
