@@ -25,7 +25,9 @@ See [Megaman story-book](https://theremjx01.github.io/megaman/index.html) for li
 ### Components    
 #### `Hidden`
 This component help you to control visible of component without manual control.
-Example: 
+
+Example:
+ 
 ``` typescript jsx
 import * as React from 'react';
 import { Fragment } from 'react';
@@ -51,6 +53,7 @@ const WithHidden = () => (
 ```
 
 Props:
+
 ```typescript
 type HiddenProps = {
 	when?: boolean | (props?: object) => boolean; // children component will visible only when "when" is false or "when" func return false 
@@ -59,14 +62,39 @@ type HiddenProps = {
 ```
 
 #### `FlowManagerReminder`
-
-#### `MockBrowser`
-This component simulate browser ui. Especially helpful on test - in my case, I'm using it in my story book
+This component help you to show a modal-like automatically when has incompleteFlow stored in flowManager in localStorage.
 
 Props: 
+
+```typescript
+export type ReminderComponent = (props: {
+  incompleteFlow: {currentStep: string, extraProps: object, currentUrl: string}, // data of incomplete flow
+  resetFlow: () => void,// a func that will reset current state of the flow
+  confirmRestoreIncompleteFlow: (navigateFunc) => void // a func that will call navigateFunc with the `currentUrl` of incomplete flow when being called
+  // ... extraReminderProps will be passed through 
+}) => React.ReactNode;
+
+export interface FlowManagerReminderProps {
+	flowKey: string;
+	Reminder: ReminderComponent; 
+	extraReminderProps?: any;
+	getEntityId: (props?: object) => id: string | number;
+}
+```
+
+#### `MockBrowser`
+This component simulate browser ui. Especially helpful on test - in my case, I'm using it in my story book. Go to [Megaman's StoryBook](#collection) to see the interact demo
+
+Props: 
+
 ```typescript
 export type WithSetUrlProps = {
 	setUrl: (url: string) => void;
+};
+
+export type Route = {
+	url: string;
+	component: any;
 };
 
 export type MockBrowserProps = {
