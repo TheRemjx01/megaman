@@ -138,7 +138,8 @@ const EnhancedComponent =  flowManager.withIncompleteFlow({
 
 
 #### `withSetFlowStepHandlers`
-A higher-order component that help you to access to `setFlowStep` as a prop to wrapped component, when you call it then you can go back to it later - even you have closed the browser. 
+A higher-order component that help you to access to `setFlowStep` as a prop to wrapped component
+ When you call `setFlowStep`, it saved down your flowData to localStorage. After that, you can go back to it later - even you have closed the browser. 
 
 Example:
 ```typescript jsx
@@ -178,3 +179,16 @@ export type WithSetFlowStepHandlers = (params: {
   getCurrentUrl: (props?: object) => string | number // a func that help to access the url by props as the params
 }) => (Comopnent: WithSetFlowComponent) => React.ReactElement;
 ```
+
+### FAQs
+
+#### Why flow manager stuffs?
+Given a scenario:
+
+You have some complex UI with some long steps that need to complete. I.e: A complex booking flow with multiple step and long form:
+`- Check in - Contact - Review - Make Payment - Get Receipt - Send Email`
+
+
+Then your customer browser quit with some reasons, so when customer go back, you don't want your customer to start from begin again, you want him to go back to the right url with the right step.
+ 
+ So by using megaman's [`FlowManagerReminder`](#FlowManagerReminder), [`flowManager.withSetFlowStepsHandlers`](#withSetFlowStepHandlers) and [`flowManager.withIncompleteFlow`](#withIncompleteFlow), we help you to simplify as much as possible your code and template.
