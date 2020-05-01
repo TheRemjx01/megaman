@@ -24,7 +24,24 @@ See [Megaman story-book](https://theremjx01.github.io/megaman/index.html) for li
 
 ### Components    
 #### `Hidden`
-Prop: 
+Example: 
+``` typescript jsx
+import * as React from 'react';
+import { Fragment } from 'react';
+import { Hidden } from '@theremjx01/megaman';
+
+const Demo = () => (
+  <Fragment>
+      <Hidden when={true}>
+        This block will always be hidden
+      </Hidden>
+      <Hidden when={false}>
+        This block will always be visible
+      </Hidden>
+  </Fragment>
+)
+```
+Type: 
 
 | Prop name     | Description   | Type | Default |
 | ------------- |:-------------:| ----:|--------:|
