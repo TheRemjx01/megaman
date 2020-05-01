@@ -1,5 +1,6 @@
 import { withHandlers, withProps, compose } from 'recompose';
-import { GetEntityId, flowManager } from '../hocs';
+import { GetEntityId, flowManager, FlowData } from '../hocs';
+import { get } from 'lodash';
 
 interface WithIncompleteFlowDataParams {
 	flowKey: string;
@@ -34,17 +35,16 @@ export const onDiscardIncompleteFlowHandler = ({
 
 export type NavigateFunc = (path: string) => void;
 
-interface ConfirmRestoreIncompleteFlowParams {
-	firstIncompleteCurrentUrl: string;
-}
-
 export const confirmRestoreIncompleteFlowHandler = ({
-	firstIncompleteCurrentUrl,
-}: ConfirmRestoreIncompleteFlowParams) => (navigate: NavigateFunc): void => {
-	if (!firstIncompleteCurrentUrl) {
+	incompleteFlow,
+}: {
+	incompleteFlow: FlowData;
+}) => (navigate: NavigateFunc): void => {
+	const currentUrl = get(incompleteFlow, 'currentUrl');
+	if (!currentUrl) {
 		return;
 	}
-	navigate(firstIncompleteCurrentUrl);
+	navigate(currentUrl);
 };
 
 const enhance = compose(

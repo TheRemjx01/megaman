@@ -100,7 +100,7 @@ const SimpleReminder: React.FC<ReminderProps> = ({
 	resetFlow,
 	incompleteFlow,
 	confirmRestoreIncompleteFlow,
-	historyPush,
+	setUrl,
 }: ReminderProps) => {
 	const [visible, setVisible] = useState(true);
 	const onResetFlowClick = (): void => {
@@ -126,7 +126,7 @@ const SimpleReminder: React.FC<ReminderProps> = ({
 					<code>{JSON.stringify(incompleteFlow)}</code>
 				</p>
 				<button onClick={onResetFlowClick}>Reset flow</button>
-				<button onClick={(): void => confirmRestoreIncompleteFlow(historyPush)}>
+				<button onClick={(): void => confirmRestoreIncompleteFlow(setUrl)}>
 					Confirm restore flow
 				</button>
 			</div>
@@ -152,6 +152,7 @@ const ReminderPage = mockWithRouter((props) => {
 			flowKey={FLOW.name}
 			getEntityId={getEntityId}
 			Reminder={SimpleReminder}
+			reminderProps={{ setUrl: props.setUrl }}
 			{...props}
 		>
 			<div style={whiteColorTextStyle}>

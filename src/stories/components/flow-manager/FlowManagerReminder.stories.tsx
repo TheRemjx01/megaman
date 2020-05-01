@@ -88,9 +88,11 @@ export const whenHasIncompleteFlow: React.FC<void> = () => {
 					<ul>
 						<li>Auto detect incomplete flow by flowKey</li>
 						<li>
-							By accept Reminder as a prop, you can custom UI/UX as well as use
-							action that FlowManagerReminder provide: <br />
-							[resetFlow, confirmRestoreIncompleteFlow, incompleteFlow]
+							By accept Reminder as a prop, you can use any Reminder Component
+							that use props that FlowManagerReminder provide: <br />
+							<code>
+								[resetFlow, confirmRestoreIncompleteFlow, incompleteFlow]
+							</code>
 						</li>
 					</ul>
 				</p>
