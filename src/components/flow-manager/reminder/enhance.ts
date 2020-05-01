@@ -1,9 +1,5 @@
 import { withHandlers, withProps, compose } from 'recompose';
-import {
-	getIncompleteFlow,
-	GetEntityId,
-	resetSelectedFlowKeysHandlerV2,
-} from '../hocs';
+import { GetEntityId, flowManager } from '../hocs';
 
 interface WithIncompleteFlowDataParams {
 	flowKey: string;
@@ -15,7 +11,7 @@ export const withIncompleteFlowData = ({
 	getEntityId,
 	...otherProps
 }: WithIncompleteFlowDataParams): object => {
-	const { incompleteFlow } = getIncompleteFlow({
+	const { incompleteFlow } = flowManager.getIncompleteFlow({
 		flowKey,
 		getEntityId,
 	})(otherProps);
@@ -54,7 +50,7 @@ export const confirmRestoreIncompleteFlowHandler = ({
 const enhance = compose(
 	withProps(withIncompleteFlowData),
 	withHandlers({
-		resetFlow: resetSelectedFlowKeysHandlerV2,
+		resetFlow: flowManager.resetSelectedFlowKeysHandler,
 	}),
 	withHandlers({
 		discardIncompleteFlow: onDiscardIncompleteFlowHandler,

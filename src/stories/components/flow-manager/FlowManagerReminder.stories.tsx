@@ -3,7 +3,8 @@ import { useState } from 'react';
 import { withKnobs, text, number, boolean } from '@storybook/addon-knobs';
 import { prepareIncompleteFlow, ReactRouterMatch } from './setup.stories';
 import { FlowManagerReminder, Hidden } from '../../../index';
-import { ReminderProps } from '../../../components/flow-manager/reminder/FlowManagerReminder';
+import { ReminderProps } from '../../../components/flow-manager/reminder';
+import { GetEntityId } from '../../../components/flow-manager/hocs';
 
 export default {
 	title: 'FlowManagerReminder',
@@ -12,7 +13,15 @@ export default {
 };
 
 const whiteColorTextStyle = { color: 'white' };
+export interface ResetFlowParams {
+	flow: string;
+	getEntityId: GetEntityId;
+}
 
+export interface ResetSelectedFlowKeysParams {
+	flowKey: string;
+	getEntityId: GetEntityId;
+}
 const SimpleReminder: React.FC<ReminderProps> = ({
 	resetFlow,
 	incompleteFlow,

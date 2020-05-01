@@ -46,7 +46,9 @@ export interface SetFlowParams {
 	getCurrentUrl: GetCurrentUrl;
 }
 
-export const setFlowStep = ({
+export type SetFlowStep = (params: SetFlowParams) => (props?: object) => void;
+
+export const setFlowStep: SetFlowStep = ({
 	flow,
 	step,
 	getEntityId,

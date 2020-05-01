@@ -1,5 +1,5 @@
-import { setFlowStep } from '../../../components/flow-manager/hocs';
 import { clearFlowManagerHandler } from '../../../components/flow-manager/hocs/clear-flow';
+import { flowManager } from '../../../components/flow-manager/hocs';
 
 export type ReactRouterMatch = {
 	params: {
@@ -24,7 +24,7 @@ export const prepareIncompleteFlow = ({
 	const mockLocation: ReactRouterLocation = { url: mockUrl };
 	const mockProps = { match: mockMatch, location: mockLocation };
 	if (!clearStorage) {
-		setFlowStep({
+		flowManager.setFlowStep({
 			flow: flowKey,
 			step: flowStep,
 			getEntityId: (props: { match: ReactRouterMatch }) =>
