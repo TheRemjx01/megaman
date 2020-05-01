@@ -110,7 +110,8 @@ export type MockBrowserProps = {
 #### `withIncompleteFlow`
 A higher-order component that let your component access to incompleteFlow data which identified by flowKey.
 
-```
+Types: 
+```typescript
 export type WithIncompleteFlow = (
 	params: {
        flowKey: string; // key that identify flow 
@@ -137,4 +138,43 @@ const EnhancedComponent =  flowManager.withIncompleteFlow({
 
 
 #### `withSetFlowStepHandlers`
-A higher-order component that help you to save flow state, step to localStorage, then you can go to it later.
+A higher-order component that help you to access to `setFlowStep` as a prop to wrapped component, when you call it then you can go back to it later - even you have closed the browser. 
+
+Example:
+```typescript jsx
+import * as React from 'react';
+import {useEffect} from 'react';
+import {withRouter} from 'react-router-dom';
+import {flowManager} from '@theremjx01/megaman';
+
+const WithSetFlowStep = flowManager.withSetFlowStepHandlers({
+ flow: 'check-out',
+ step: 'middle-step',
+ getEntityId: props => props.match.params.id,
+ getCurrentUrl: props => props.location.url,
+})(withRouter(
+  ({setFlowStep}) => {
+    useEffect(() => {
+      setFlowStep();
+    },[])
+    return (
+      <div>Checkpoint saved that restored later</div>
+    )
+  }
+))
+
+```
+
+Spec: 
+```typescript
+export type WithSetFlowComponent = (props: {
+  setFlowStep: () => void // a passed down func that will save flow data when being called - recommend to call it in componentDidMount or react hook
+}) => React.ReactElement;
+
+export type WithSetFlowStepHandlers = (params: {
+  flow: string; // flowKey that saved
+  step: string; // step of the flow that saved
+  getEntityId: (props?: object) => string | number // a func that help to get entity id by props as the params
+  getCurrentUrl: (props?: object) => string | number // a func that help to access the url by props as the params
+}) => (Comopnent: WithSetFlowComponent) => React.ReactElement;
+```
