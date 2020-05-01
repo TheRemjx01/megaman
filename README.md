@@ -12,6 +12,8 @@ yarn add @theremjx01/megaman
 
 ## Collection
 
+See [Megaman story-book](https://theremjx01.github.io/megaman/index.html) for live documentation and interaction
+
 * [Components](#Components)
     + [`Hidden`](#hidden)
     + [`FlowManagerReminder`](#FlowManagerReminder)
@@ -22,21 +24,12 @@ yarn add @theremjx01/megaman
 
 ### Components    
 #### `Hidden`
-Hidden access
+Prop: 
 
-```typescript jsx
-import * as React from 'react';
-import ReactDOM from 'react-dom';
-import {Hidden} from '@theremjx01/megaman';
-
-ReactDOM.render(
-  <Hidden when={boolean | (): boolean}>
-    <div></div>
-</Hidden>,
-document
-)
-
-```
+| Prop name     | Description   | Type | Default |
+| ------------- |:-------------:| ----:|--------:|
+| when | wrapped component will be removed when this value become true | `boolean` | `true`|
+| children | wrapped component | `any` ||
 
 #### `Flow Manager Reminder`
 
@@ -47,6 +40,3 @@ document
 
 #### `withSetFlowStepHandlers`
 
-
-Please go to this link to view how to use the component in this package:
-[Megaman story-book](https://theremjx01.github.io/megaman/index.html)
