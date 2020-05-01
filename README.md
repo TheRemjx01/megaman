@@ -1,7 +1,16 @@
 # megaman
 Megaman is a collection of some cool React component that simplify logic handling in your code.
 
-## Collections 
+## Install
+```npm
+npm i @theremjx01/megaman
+```
+or with yarn:
+```npm
+yarn add @theremjx01/megaman
+```
+
+## Collection
 
 * [Components](#Components)
     + [`Hidden`](#hidden)
@@ -12,16 +21,31 @@ Megaman is a collection of some cool React component that simplify logic handlin
     + [`flowManager.withSetFlowStepHandlers`](#withSetFlowStepHandlers)
 
 ### Components    
-#### Hidden
+#### `Hidden`
+Hidden access
 
-#### Flow Manager Reminder
+```typescript jsx
+import * as React from 'react';
+import ReactDOM from 'react-dom';
+import {Hidden} from '@theremjx01/megaman';
 
-#### MockBrowser
+ReactDOM.render(
+  <Hidden when={boolean | (): boolean}>
+    <div></div>
+</Hidden>,
+document
+)
+
+```
+
+#### `Flow Manager Reminder`
+
+#### `MockBrowser`
 
 ### Higher-order Components
-#### withIncompleteFlow
+#### `withIncompleteFlow`
 
-#### withSetFlowStepHandlers
+#### `withSetFlowStepHandlers`
 
 
 Please go to this link to view how to use the component in this package:
