@@ -24,13 +24,21 @@ See [Megaman story-book](https://theremjx01.github.io/megaman/index.html) for li
 
 ### Components    
 #### `Hidden`
+This component help you to control visible of component without manual control.
 Example: 
 ``` typescript jsx
 import * as React from 'react';
 import { Fragment } from 'react';
 import { Hidden } from '@theremjx01/megaman';
 
-const Demo = () => (
+const WithoutHidden = () => (
+  <Fragment>
+   {true && 'This block will always be hidden'}
+   {false && 'This block will always be visible'}
+  </Fragment>
+)
+
+const WithHidden = () => (
   <Fragment>
       <Hidden when={true}>
         This block will always be hidden
@@ -41,16 +49,34 @@ const Demo = () => (
   </Fragment>
 )
 ```
-Type: 
 
-| Prop name     | Description   | Type | Default |
-| ------------- |:-------------:| ----:|--------:|
-| when | wrapped component will be removed when this value become true | `boolean` | `true`|
-| children | wrapped component | `any` ||
+Props:
+```typescript
+type HiddenProps = {
+	when?: boolean | (props?: object) => boolean; // children component will visible only when "when" is false or "when" func return false 
+	children: React.ReactElement | React.ReactElement[] | string;
+};
+```
 
-#### `Flow Manager Reminder`
+#### `FlowManagerReminder`
 
 #### `MockBrowser`
+This component simulate browser ui. Especially helpful on test - in my case, I'm using it in my story book
+
+Props: 
+```typescript
+export type WithSetUrlProps = {
+	setUrl: (url: string) => void;
+};
+
+export type MockBrowserProps = {
+	domain?: string;
+	initialUrl?: string;
+	QuickAccess?: React.FC<WithSetUrlProps>;
+	style?: object;
+	Routes: Route[];
+};
+```
 
 ### Higher-order Components
 #### `withIncompleteFlow`
