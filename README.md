@@ -112,7 +112,7 @@ A higher-order component that let your component access to incompleteFlow data w
 
 ```
 export type WithIncompleteFlow = (
-	{
+	params: {
        flowKey: string, // key that identify flow 
        getEntityId: (props?: object) => string | number, // a func that help to get id of entity, can access to all props of component
 	},
